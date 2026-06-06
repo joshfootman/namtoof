@@ -2,7 +2,7 @@ import LogoSvg from "../assets/logo.svg?react";
 
 export function Navbar() {
   return (
-    <nav className="flex flex-row flex-nowrap justify-between p-8 text-foreground">
+    <nav className="flex flex-row flex-nowrap justify-between p-4 text-foreground md:p-8">
       <div className="flex flex-row items-center gap-1.5 md:gap-3">
         <LogoSvg width={64} height={64} className="size-12 md:size-16" />
         <div className="flex flex-col">
