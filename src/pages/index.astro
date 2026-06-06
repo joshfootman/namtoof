@@ -1,4 +1,6 @@
 ---
+import { Navbar } from '../components/navbar';
+import '../styles/global.css';
 
 ---
 
@@ -10,24 +12,9 @@
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>namtoof</title>
-		<style>
-			* { margin: 0 }
-
-			.wrap {
-				height: 90vh;
-				width: 100vw;
-
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				align-items: center;
-			}
-		</style>
 	</head>
 	<body>
-		<div class="wrap">
-			<h1>josh footman</h1>
-			<p>Senior Frontend Engineer</p>
-		</div>
+		<Navbar client:load />
+		<div class="h-[60vh] w-screen flex items-center justify-center font-pixel-primary text-4xl">🚧 WIP 🚧</div>
 	</body>
 </html>
