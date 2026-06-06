@@ -17,7 +17,7 @@ export function Navbar() {
           <a
             key={link}
             href="#"
-            className="w-30 border border-[#1f1f1f] p-2 text-center font-pixel-secomdary text-xl"
+            className="w-30 border border-foreground p-2 text-center font-pixel-secomdary text-xl"
           >
             {link}
           </a>

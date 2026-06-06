@@ -1,20 +1,20 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: "Px437 IBM Conv";
-  src: url("/fonts/Px437_IBM_Conv-2y.ttf") format("truetype");
+  font-family: "IBM Conv-2y";
+  src: url("/fonts/Web437_IBM_Conv-2y.woff") format("truetype");
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Px437 IBM PS";
-  src: url("/fonts/Px437_IBM_PS-55_re.ttf") format("truetype");
+  font-family: "IBM PS/55 re";
+  src: url("/fonts/Web437_IBM_PS-55_re.woff") format("truetype");
   font-display: swap;
 }
 
 @theme inline {
-  --font-pixel-primary: "Px437 IBM Conv", monospace;
-  --font-pixel-secomdary: "Px437 IBM PS", monospace;
-  --text-foreground: #1f1f1f;
-  --text-background: #f5f5f5;
+  --font-pixel-primary: "IBM Conv-2y", monospace;
+  --font-pixel-secomdary: "IBM PS/55 re", monospace;
+  --color-foreground: #1f1f1f;
+  --color-background: #f5f5f5;
 }
