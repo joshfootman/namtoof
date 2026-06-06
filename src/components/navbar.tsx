@@ -3,7 +3,7 @@ import LogoSvg from "../assets/logo.svg?react";
 export function Navbar() {
   return (
     <nav className="flex flex-row flex-nowrap justify-between p-8 text-foreground">
-      <div className="flex flex-row items-center gap-3">
+      <div className="flex flex-row items-center gap-1.5 md:gap-3">
         <LogoSvg width={64} height={64} className="size-12 md:size-16" />
         <div className="flex flex-col">
           <h1 className="font-pixel-primary text-2xl md:text-4xl">JOSH FOOTMAN</h1>
