@@ -12,6 +12,30 @@
   font-display: swap;
 }
 
+@keyframes dialog-menu-in {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes dialog-menu-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
 @theme inline {
   --font-pixel-primary: "IBM Conv-2y", monospace;
   --font-pixel-secondary: "IBM PS/55 re", monospace;
