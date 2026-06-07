@@ -2,8 +2,8 @@ import LogoSvg from "../assets/logo.svg?react";
 
 export function Navbar() {
   return (
-    <nav className="flex flex-row flex-nowrap justify-between p-4 text-foreground md:p-8">
-      <div className="flex flex-row items-center gap-1.5 md:gap-3">
+    <nav className="absolute flex w-full flex-row flex-nowrap justify-between p-4 text-foreground md:p-8">
+      <div className="flex flex-row items-center gap-1.5 md:gap-2">
         <LogoSvg width={64} height={64} className="size-12 md:size-16" />
         <div className="flex flex-col">
           <h1 className="font-pixel-primary text-2xl md:text-4xl">JOSH FOOTMAN</h1>
@@ -12,12 +12,12 @@ export function Navbar() {
           </p>
         </div>
       </div>
-      <div className="hidden flex-row items-start justify-center gap-8 xl:flex">
-        {["About", "Experience", "Education", "Projects", "Links"].map((link) => (
+      <div className="hidden flex-row items-start justify-center gap-2 md:flex">
+        {["ABOUT", "EXPERIENCE", "PROJECTS", "LINKS"].map((link) => (
           <a
             key={link}
-            href="#"
-            className="w-30 border border-foreground p-2 text-center font-pixel-secomdary text-xl"
+            href={`#${link}`}
+            className="px-4 py-2 font-pixel-secomdary text-xl outline-foreground hover:bg-foreground hover:text-background focus-visible:bg-foreground focus-visible:text-background focus-visible:outline-none"
           >
             {link}
           </a>
