@@ -1,40 +1,69 @@
 ---
-import { Navbar } from '../components/navbar';
-import '../styles/global.css';
-
+import { Navbar } from "../components/navbar"
+import "../styles/global.css"
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>namtoof</title>
-	</head>
-	<body class="bg-background">
-		<Navbar client:load />
-		<div class="h-screen w-screen flex items-center justify-center font-pixel-primary text-4xl">🚧 WIP 🚧</div>
-		<div class="h-screen w-screen">
-			<div class="p-8">
-				<h2 id="ABOUT" class="font-pixel-secomdary text-4xl md:text-6xl scroll-mt-8">ABOUT</h2>
-			</div>
-		</div>
-		<div class="h-screen w-screen">
-			<div class="p-8">
-				<h2 id="EXPERIENCE" class="font-pixel-secomdary text-4xl md:text-6xl scroll-mt-8">EXPERIENCE</h2>
-			</div>
-		</div>
-		<div class="h-screen w-screen">
-			<div class="p-8">
-				<h2 id="PROJECTS" class="font-pixel-secomdary text-4xl md:text-6xl scroll-mt-8">PROJECTS</h2>
-			</div>
-		</div>
-		<div class="h-screen w-screen">
-			<div class="p-8">
-				<h2 id="LINKS" class="font-pixel-secomdary text-4xl md:text-6xl scroll-mt-8">LINKS</h2>
-			</div>
-		</div>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Josh Footman</title>
+  </head>
+  <body class="bg-background">
+    <Navbar client:load />
+    <section class="h-[90vh] w-screen flex items-center justify-center font-pixel-primary">
+      <div class="flex flex-col-reverse lg:flex-row w-full p-8 lg:px-[10%] items-center lg:items-end">
+        <div class="flex flex-1 items-end justify-end flex-col px-8 pt-12 lg:pt-0">
+          <h2 class="text-5xl md:text-6xl xl:text-7xl text-nowrap">JOSH FOOTMAN</h2>
+          <p class="font-pixel-secondary text-3xl xl:text-5xl">Creative Engineer</p>
+        </div>
+        <div class="flex flex-1 items-center justify-start">
+          <div class="border border-foreground h-110 w-70 md:h-140 md:w-100"></div>
+        </div>
+      </div>
+    </section>
+    <section class="h-screen w-screen">
+      <div class="p-4 pt-14 md:p-8 md:pt-24 md:px-[10%] h-full">
+        <div class="h-full p-4">
+          <div class="w-full flex flex-row items-start">
+            <h2 id="ABOUT" class="font-pixel-secondary text-5xl md:text-6xl scroll-mt-8">ABOUT</h2>
+            <div class="flex flex-1 border-t border-r ml-8 pt-px border-foreground h-6 mt-6 md:h-7.5 md:mt-7.5"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="h-screen w-screen">
+      <div class="p-4 pt-14 md:p-8 md:pt-24 md:px-[10%] h-full">
+        <div class="h-full p-4">
+          <div class="w-full flex flex-row items-start">
+            <h2 id="EXPERIENCE" class="font-pixel-secondary text-5xl md:text-6xl scroll-mt-8">EXPERIENCE</h2>
+            <div class="flex flex-1 border-t border-r ml-8 pt-px border-foreground h-6 mt-6 md:h-7.5 md:mt-7.5"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="h-screen w-screen">
+      <div class="p-4 pt-14 md:p-8 md:pt-24 md:px-[10%] h-full">
+        <div class="h-full p-4">
+          <div class="w-full flex flex-row items-start">
+            <h2 id="PROJECTS" class="font-pixel-secondary text-5xl md:text-6xl scroll-mt-8">PROJECTS</h2>
+            <div class="flex flex-1 border-t border-r ml-8 pt-px border-foreground h-6 mt-6 md:h-7.5 md:mt-7.5"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="h-screen w-screen">
+      <div class="p-4 pt-14 md:p-8 md:pt-24 md:px-[10%] h-full">
+        <div class="h-full p-4">
+          <div class="w-full flex flex-row items-start">
+            <h2 id="LINKS" class="font-pixel-secondary text-5xl md:text-6xl scroll-mt-8">LINKS</h2>
+            <div class="flex flex-1 border-t border-r ml-8 pt-px border-foreground h-6 mt-6 md:h-7.5 md:mt-7.5"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
 </html>
