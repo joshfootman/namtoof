@@ -45,7 +45,7 @@ export function Navbar() {
           <Dialog.Popup className="fixed top-0 right-0 z-10 flex w-screen origin-top-right flex-col gap-2 bg-black p-4 text-background transition-transform duration-300 ease-(--cubic-hover) outline-none data-ending-style:scale-x-0 data-ending-style:scale-y-0 data-starting-style:scale-x-0 data-starting-style:scale-y-0 md:hidden">
             <div className="border-b border-background pt-18"></div>
             <Dialog.Title className="sr-only">Navigation</Dialog.Title>
-            <div className="flex flex-col gap-2 sm:flex-row sm:justify-between sm:gap-0 sm:py-4">
+            <div className="flex flex-col gap-2 pt-2 sm:flex-row sm:justify-between sm:gap-0 sm:pt-4 sm:pb-2">
               {["ABOUT", "EXPERIENCE", "PROJECTS", "LINKS"].map((link) => (
                 <a key={link} href={`#${link}`} className="px-4 py-2 font-pixel-secondary text-xl">
                   {link}
