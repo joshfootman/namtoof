@@ -23,7 +23,6 @@ export function Navbar() {
         {["ABOUT", "EXPERIENCE", "PROJECTS", "LINKS"].map((link) => (
           <HoverElement asChild key={link} className="bg-background">
             <a href={`#${link}`} className="px-4 py-2 font-pixel-secondary text-xl">
-              <span aria-hidden="true" />
               <span>{link}</span>
             </a>
           </HoverElement>
