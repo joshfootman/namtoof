@@ -53,7 +53,6 @@ export function createRevealTimeline({
       onCovered?.();
     })
     .set(content, { autoAlpha: 1 })
-    .set(wipe, { transformOrigin: "bottom left" })
     .to(wipe, {
       duration: REVEAL_DURATION * 0.45,
       ease: REVEAL_EASE,

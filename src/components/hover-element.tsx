@@ -53,7 +53,7 @@ export function HoverElement({
 
     const hide = () => {
       gsap.killTweensOf(fill);
-      gsap.set(fill, { transformOrigin: "bottom left" });
+      gsap.set(fill, { transformOrigin: "top right" });
 
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         gsap.set(fill, { scale: 0 });
