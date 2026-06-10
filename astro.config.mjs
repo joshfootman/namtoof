@@ -1,8 +1,8 @@
 // @ts-check
-import { defineConfig } from "astro/config"
-import react from "@astrojs/react"
-import tailwindcss from "@tailwindcss/vite"
-import svgr from "vite-plugin-svgr"
+import { defineConfig } from "astro/config";
+import react from "@astrojs/react";
+import tailwindcss from "@tailwindcss/vite";
+import svgr from "vite-plugin-svgr";
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,10 +15,16 @@ export default defineConfig({
         svgrOptions: {
           plugins: ["@svgr/plugin-svgo", "@svgr/plugin-jsx"],
           svgoConfig: {
-            plugins: ["preset-default", "removeTitle", "removeDesc", "removeDoctype", "cleanupIds"],
+            plugins: [
+              "preset-default",
+              "removeTitle",
+              "removeDesc",
+              "removeDoctype",
+              "cleanupIds",
+            ],
           },
         },
       }),
     ],
   },
-})
+});

@@ -1,6 +1,9 @@
 import { useEffect, useMemo, useRef } from "react";
 import gsap from "gsap";
-import { createRevealTimeline, ROTATING_REVEAL_INTERVAL } from "../lib/reveal-animation";
+import {
+  createRevealTimeline,
+  ROTATING_REVEAL_INTERVAL,
+} from "../lib/reveal-animation";
 import { cn } from "../lib/utils";
 
 type RotatingRevealTextProps = {
@@ -8,7 +11,10 @@ type RotatingRevealTextProps = {
   className?: string;
 };
 
-export function RotatingRevealText({ items, className }: RotatingRevealTextProps) {
+export function RotatingRevealText({
+  items,
+  className,
+}: RotatingRevealTextProps) {
   const labels = useMemo(() => items.filter(Boolean), [items]);
   const indexRef = useRef(0);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -27,7 +33,10 @@ export function RotatingRevealText({ items, className }: RotatingRevealTextProps
     indexRef.current = 0;
     text.textContent = labels[0] ?? "";
 
-    if (labels.length < 2 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (
+      labels.length < 2 ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
       gsap.set(content, { autoAlpha: 1 });
       return;
     }
@@ -89,8 +98,14 @@ export function RotatingRevealText({ items, className }: RotatingRevealTextProps
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 z-20 origin-top-right scale-0 bg-foreground motion-reduce:hidden"
       />
-      <div ref={contentRef} className="col-start-1 row-start-1 opacity-0 motion-reduce:opacity-100">
-        <p ref={textRef} className={cn("text-right whitespace-nowrap", className)}>
+      <div
+        ref={contentRef}
+        className="col-start-1 row-start-1 opacity-0 motion-reduce:opacity-100"
+      >
+        <p
+          ref={textRef}
+          className={cn("text-right whitespace-nowrap", className)}
+        >
           {labels[0]}
         </p>
       </div>

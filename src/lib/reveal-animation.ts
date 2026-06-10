@@ -8,7 +8,10 @@ export const REVEAL_DURATION = 1.4;
 export const REVEAL_THRESHOLD = 0.35;
 export const ROTATING_REVEAL_INTERVAL = 6000;
 
-export const REVEAL_EASE = CustomEase.create("reveal-element", "M0,0 C0.65,0.05 0,1 1,1");
+export const REVEAL_EASE = CustomEase.create(
+  "reveal-element",
+  "M0,0 C0.65,0.05 0,1 1,1",
+);
 
 type CreateRevealTimelineOptions = {
   content: HTMLElement;

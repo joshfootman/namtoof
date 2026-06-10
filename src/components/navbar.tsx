@@ -1,10 +1,11 @@
 import { Dialog } from "@base-ui/react";
-import { useRef } from "react";
+import React from "react";
 import LogoSvg from "../assets/logo.svg?react";
 import { HoverElement } from "./hover-element";
 
 export function Navbar() {
-  const navRef = useRef<HTMLElement>(null);
+  const [open, setOpen] = React.useState(false);
+  const navRef = React.useRef<HTMLElement>(null);
 
   return (
     <nav
@@ -22,13 +23,16 @@ export function Navbar() {
       <div className="hidden flex-row items-start justify-center gap-2 md:flex">
         {["ABOUT", "EXPERIENCE", "PROJECTS", "LINKS"].map((link) => (
           <HoverElement asChild key={link} className="bg-background">
-            <a href={`#${link}`} className="px-4 py-2 font-pixel-secondary text-xl">
+            <a
+              href={`#${link}`}
+              className="px-4 py-2 font-pixel-secondary text-xl"
+            >
               <span>{link}</span>
             </a>
           </HoverElement>
         ))}
       </div>
-      <Dialog.Root modal={false}>
+      <Dialog.Root modal={false} open={open} onOpenChange={setOpen}>
         <div className="absolute top-0 right-8 h-7 w-7 md:hidden">
           <span className="pointer-events-none absolute inset-0 z-0 bg-background" />
           <Dialog.Trigger
@@ -46,7 +50,12 @@ export function Navbar() {
             <Dialog.Title className="sr-only">Navigation</Dialog.Title>
             <div className="flex flex-col gap-2 pt-2 sm:flex-row sm:justify-between sm:gap-0 sm:pt-4 sm:pb-2">
               {["ABOUT", "EXPERIENCE", "PROJECTS", "LINKS"].map((link) => (
-                <a key={link} href={`#${link}`} className="px-4 py-2 font-pixel-secondary text-xl">
+                <a
+                  key={link}
+                  href={`#${link}`}
+                  onClick={() => setOpen(false)}
+                  className="px-4 py-2 font-pixel-secondary text-xl"
+                >
                   {link}
                 </a>
               ))}

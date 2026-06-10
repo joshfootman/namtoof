@@ -1,11 +1,19 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { createRevealTimeline, REVEAL_THRESHOLD } from "../lib/reveal-animation";
+import {
+  createRevealTimeline,
+  REVEAL_THRESHOLD,
+} from "../lib/reveal-animation";
 import { cn } from "../lib/utils";
 
 type RevealElementProps = React.ComponentProps<"div">;
 
-export function RevealElement({ className, children, style, ...props }: RevealElementProps) {
+export function RevealElement({
+  className,
+  children,
+  style,
+  ...props
+}: RevealElementProps) {
   const ref = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const wipeRef = useRef<HTMLSpanElement>(null);
@@ -45,13 +53,21 @@ export function RevealElement({ className, children, style, ...props }: RevealEl
   }, []);
 
   return (
-    <div ref={ref} className={cn("relative overflow-hidden", className)} style={style} {...props}>
+    <div
+      ref={ref}
+      className={cn("relative overflow-hidden", className)}
+      style={style}
+      {...props}
+    >
       <span
         ref={wipeRef}
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 z-20 origin-top-right scale-0 bg-foreground motion-reduce:hidden"
       />
-      <div ref={contentRef} className={cn("opacity-0", "motion-reduce:opacity-100")}>
+      <div
+        ref={contentRef}
+        className={cn("opacity-0", "motion-reduce:opacity-100")}
+      >
         {children}
       </div>
     </div>
