@@ -30,13 +30,13 @@ import "../styles/global.css";
           class="flex flex-1 flex-col items-end justify-end px-8 pt-8 lg:mb-20 lg:pt-0"
         >
           <div class="flex flex-col items-end">
-            <RevealElement client:visible>
+            <RevealElement client:load>
               <h2 class="text-5xl text-nowrap md:text-6xl xl:text-7xl">
                 JOSH FOOTMAN
               </h2>
             </RevealElement>
             <RotatingRevealText
-              client:visible
+              client:load
               items={[
                 "CREATIVE ENGINEER",
                 "SOFTWARE ENGINEER",
@@ -47,7 +47,7 @@ import "../styles/global.css";
           </div>
         </div>
         <div class="flex flex-1 items-center justify-start lg:mb-20">
-          <RevealElement client:visible>
+          <RevealElement client:load>
             <div class="h-110 w-70 border border-foreground md:h-140 md:w-100">
             </div>
           </RevealElement>
