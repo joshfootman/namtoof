@@ -99,7 +99,7 @@ export function Navbar() {
       className="sticky flex w-screen flex-row flex-nowrap justify-between bg-background p-8 text-foreground lg:justify-evenly lg:px-[10%] xl:px-[20%]"
     >
       <div className="flex flex-row items-center gap-1.5 md:gap-2">
-        <div className="z-20 font-pixel-secondary text-3xl pointer-events-none mix-blend-difference text-background">
+        <div className="z-20 text-3xl pointer-events-none mix-blend-difference text-background">
           JOSH FOOTMAN
         </div>
       </div>
@@ -109,7 +109,7 @@ export function Navbar() {
           <a
             key={link}
             href={`#${link}`}
-            className="group relative inline-flex items-baseline before:mr-1 after:ml-1 py-2 font-pixel-secondary text-xl before:font-bold before:opacity-0 before:content-['[_'] after:font-bold after:opacity-0 after:content-['_\]'] hover:before:opacity-100 hover:after:opacity-100 focus-visible:before:opacity-100 focus-visible:after:opacity-100 outline-none"
+            className="group relative inline-flex items-baseline before:mr-1 after:ml-1 py-2 text-xl before:font-bold before:opacity-0 before:content-['[_'] after:font-bold after:opacity-0 after:content-['_\]'] hover:before:opacity-100 hover:after:opacity-100 focus-visible:before:opacity-100 focus-visible:after:opacity-100 outline-none"
           >
             <span className="absolute inset-0 z-1"></span>
             <span className="inline-block overflow-hidden leading-none">
@@ -145,7 +145,7 @@ export function Navbar() {
                   key={link}
                   href={`#${link}`}
                   onClick={() => setOpen(false)}
-                  className="px-10 py-2 font-pixel-secondary text-xl outline-none"
+                  className="px-10 sm:w-full w-fit text-center py-2 text-xl outline-none"
                 >
                   <span className="inline-block overflow-hidden leading-none">
                     <span className="inline-block transform-[translateY(0)] opacity-100 transition-[transform,opacity] delay-330 duration-300 ease text-shadow-[0_1em_0] text-shadow-background group-data-ending-style/menu:transform-[translateY(1em)] group-data-ending-style/menu:opacity-0 group-data-starting-style/menu:transform-[translateY(1em)] group-data-starting-style/menu:opacity-0 motion-reduce:transform-[translateY(0)] motion-reduce:opacity-100 motion-reduce:transition-none">

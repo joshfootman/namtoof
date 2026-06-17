@@ -15,8 +15,13 @@ import "../styles/global.css";
     <meta name="generator" content={Astro.generator} />
     <title>Josh Footman</title>
   </head>
-  <body class="bg-background">
+  <body class="bg-background font-pixel-secondary">
     <Navbar client:load />
-    <section></section>
+    <div class="grid w-screen place-content-center pb-25">
+      <div
+        class="h-[200dvh] w-screen sm:w-[95vw] sm:border sm:border-foreground lg:w-[90vw] xl:w-[80vw]"
+      >
+      </div>
+    </div>
   </body>
 </html>
