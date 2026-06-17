@@ -4,6 +4,7 @@ import gsap from "gsap";
 
 export function Navbar() {
   const [open, setOpen] = React.useState(false);
+  const [atScrollRoot, setAtScrollRoot] = React.useState(true);
 
   const navRef = React.useRef<HTMLElement>(null);
   const triggerRef = React.useRef<HTMLButtonElement>(null);
@@ -11,6 +12,19 @@ export function Navbar() {
   const hasMountedRef = React.useRef(false);
 
   const prefersReducedMotion = usePrefersReducedMotion();
+
+  React.useEffect(() => {
+    const updateAtScrollRoot = () => {
+      setAtScrollRoot(window.scrollY <= 0);
+    };
+
+    updateAtScrollRoot();
+    window.addEventListener("scroll", updateAtScrollRoot, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", updateAtScrollRoot);
+    };
+  }, []);
 
   React.useEffect(() => {
     if (!triggerRef.current) return;
@@ -98,12 +112,23 @@ export function Navbar() {
       ref={navRef}
       className="sticky top-0 z-10 flex w-screen flex-row flex-nowrap justify-between p-8 text-foreground lg:justify-evenly lg:px-[10%] xl:px-[20%]"
     >
-      <div className="flex flex-row items-center gap-1.5 md:gap-2 bg-background">
-        <div className="z-20 text-3xl pointer-events-none mix-blend-difference text-background">
+      <div className="flex flex-row items-center gap-1.5 md:gap-2 bg-background md:bg-transparent">
+        <div className="z-20 text-3xl pointer-events-none mix-blend-difference md:mix-blend-normal text-background md:text-foreground">
           JOSH FOOTMAN
         </div>
       </div>
-      <div className="mx-6 ml-12 hidden h-6 flex-1 border-b border-foreground md:flex"></div>
+      <div className="relative mx-6 ml-12 hidden h-6 flex-1 md:flex">
+        <span
+          className={`absolute bottom-0 left-0 h-px w-1/2 origin-right bg-foreground transition-transform duration-300 ease-in-out motion-reduce:transition-none ${
+            atScrollRoot ? "scale-x-100" : "scale-x-0"
+          }`}
+        />
+        <span
+          className={`absolute right-0 bottom-0 h-px w-1/2 origin-left bg-foreground transition-transform duration-300 ease-in-out motion-reduce:transition-none ${
+            atScrollRoot ? "scale-x-100" : "scale-x-0"
+          }`}
+        />
+      </div>
       <div className="hidden flex-row items-start justify-center gap-2 md:flex">
         {["ABOUT", "EXPERIENCE", "PROJECTS", "LINKS"].map((link) => (
           <a
