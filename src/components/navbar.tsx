@@ -8,10 +8,21 @@ export function Navbar() {
 
   const navRef = React.useRef<HTMLElement>(null);
   const triggerRef = React.useRef<HTMLButtonElement>(null);
+  const wordmarkTextRef = React.useRef<HTMLSpanElement>(null);
   const menuTlRef = React.useRef<gsap.core.Timeline | null>(null);
   const hasMountedRef = React.useRef(false);
 
   const prefersReducedMotion = usePrefersReducedMotion();
+
+  const animateWordmark = (active: boolean) => {
+    if (!wordmarkTextRef.current || prefersReducedMotion) return;
+
+    gsap.to(wordmarkTextRef.current, {
+      yPercent: active ? -50 : 0,
+      duration: 0.3,
+      ease: "power2.out",
+    });
+  };
 
   React.useEffect(() => {
     const updateAtScrollRoot = () => {
@@ -113,9 +124,22 @@ export function Navbar() {
       className="sticky top-0 z-10 flex w-screen flex-row flex-nowrap justify-between p-8 text-foreground lg:justify-evenly lg:px-[10%] xl:px-[20%]"
     >
       <div className="flex flex-row items-center gap-1.5 md:gap-2 bg-background md:bg-transparent">
-        <div className="z-20 text-3xl pointer-events-none mix-blend-difference md:mix-blend-normal text-background md:text-foreground">
-          JOSH FOOTMAN
-        </div>
+        <a
+          href="/"
+          aria-label="Josh Footman"
+          onBlur={() => animateWordmark(false)}
+          onFocus={() => animateWordmark(true)}
+          onMouseEnter={() => animateWordmark(true)}
+          onMouseLeave={() => animateWordmark(false)}
+          className="z-20 inline-flex cursor-pointer items-baseline text-3xl leading-none mix-blend-difference text-background before:mr-1 before:font-bold before:opacity-0 before:content-['[_'] after:ml-1 after:font-bold after:opacity-0 after:content-['_\]'] hover:before:opacity-100 hover:after:opacity-100 focus-visible:before:opacity-100 focus-visible:after:opacity-100 outline-none md:mix-blend-normal md:text-foreground"
+        >
+          <span className="inline-block h-[1em] overflow-hidden leading-none">
+            <span ref={wordmarkTextRef} className="inline-flex flex-col">
+              <span aria-hidden="true">JOSH FOOTMAN</span>
+              <span aria-hidden="true">HSOJ NAMTOOF</span>
+            </span>
+          </span>
+        </a>
       </div>
       <div className="relative mx-6 ml-12 hidden h-6 flex-1 md:flex">
         <span
