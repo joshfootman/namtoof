@@ -96,9 +96,9 @@ export function Navbar() {
   return (
     <nav
       ref={navRef}
-      className="sticky flex w-screen flex-row flex-nowrap justify-between bg-background p-8 text-foreground lg:justify-evenly lg:px-[10%] xl:px-[20%]"
+      className="sticky top-0 z-10 flex w-screen flex-row flex-nowrap justify-between p-8 text-foreground lg:justify-evenly lg:px-[10%] xl:px-[20%]"
     >
-      <div className="flex flex-row items-center gap-1.5 md:gap-2">
+      <div className="flex flex-row items-center gap-1.5 md:gap-2 bg-background">
         <div className="z-20 text-3xl pointer-events-none mix-blend-difference text-background">
           JOSH FOOTMAN
         </div>
@@ -121,13 +121,13 @@ export function Navbar() {
         ))}
       </div>
       <Dialog.Root modal={false} open={open} onOpenChange={setOpen}>
-        <div className="absolute top-8 right-8 h-7 w-7 md:hidden">
+        <div className="absolute top-8 right-8 h-7 w-7 md:hidden bg-background">
           <span className="pointer-events-none absolute inset-0 z-0" />
           <Dialog.Trigger
             render={
               <button
                 ref={triggerRef}
-                className="absolute inset-0 z-20 flex h-7 w-7 cursor-pointer mix-blend-difference outline-none"
+                className="absolute inset-0 z-20 flex h-7 w-7 cursor-pointer mix-blend-difference outline-none "
               >
                 <div className="absolute top-1/2 left-0 h-px w-full -translate-y-0.75 bg-white"></div>
                 <div className="absolute top-1/2 left-0 h-px w-full translate-y-0.75 bg-white"></div>
