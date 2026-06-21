@@ -50,7 +50,7 @@ export function FallingPages({
   const pages = React.Children.map(children, (child, index) => {
     if (!React.isValidElement<FallingPageProps>(child)) return child;
     return React.cloneElement(child, {
-      zIndex: index * 10,
+      zIndex: index,
     });
   });
 
@@ -190,7 +190,7 @@ export function FallingPagesPage({
       <div data-falling-page-wrap className="h-screen">
         <div
           data-falling-page-content
-          className="flex h-full w-full transform-gpu flex-col bg-noise outline outline-neutral-200 lg:px-[11.25dvw] px-8 py-[11.25dvh]"
+          className="flex h-full w-full transform-gpu flex-col bg-noise px-8 py-[11.25dvh] outline outline-neutral-200 lg:px-[11.25dvw]"
         >
           {children}
         </div>
