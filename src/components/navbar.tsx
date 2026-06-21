@@ -1,10 +1,10 @@
 import { Dialog } from "@base-ui/react";
-import React from "react";
 import gsap from "gsap";
+import React from "react";
+import { FALLING_PAGE_NAVIGATE_EVENT } from "./falling-pages";
 
 export function Navbar() {
   const [open, setOpen] = React.useState(false);
-  const [atScrollRoot, setAtScrollRoot] = React.useState(true);
 
   const navRef = React.useRef<HTMLElement>(null);
   const triggerRef = React.useRef<HTMLButtonElement>(null);
@@ -13,6 +13,23 @@ export function Navbar() {
   const hasMountedRef = React.useRef(false);
 
   const prefersReducedMotion = usePrefersReducedMotion();
+
+  const navigateToHash = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    hash: string,
+  ) => {
+    event.preventDefault();
+
+    const navigationEvent = new CustomEvent(FALLING_PAGE_NAVIGATE_EVENT, {
+      cancelable: true,
+      detail: { id: hash },
+    });
+
+    const handled = !window.dispatchEvent(navigationEvent);
+    if (handled) return;
+
+    document.getElementById(hash)?.scrollIntoView();
+  };
 
   const animateWordmark = (active: boolean) => {
     if (!wordmarkTextRef.current || prefersReducedMotion) return;
@@ -23,19 +40,6 @@ export function Navbar() {
       ease: "power2.out",
     });
   };
-
-  React.useEffect(() => {
-    const updateAtScrollRoot = () => {
-      setAtScrollRoot(window.scrollY <= 0);
-    };
-
-    updateAtScrollRoot();
-    window.addEventListener("scroll", updateAtScrollRoot, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", updateAtScrollRoot);
-    };
-  }, []);
 
   React.useEffect(() => {
     if (!triggerRef.current) return;
@@ -121,9 +125,9 @@ export function Navbar() {
   return (
     <nav
       ref={navRef}
-      className="sticky top-0 z-10 flex w-screen flex-row flex-nowrap justify-between p-8 text-foreground lg:justify-evenly lg:px-[10%] xl:px-[20%]"
+      className="fixed top-0 z-100 flex w-screen flex-row flex-nowrap items-center justify-between p-8 text-white mix-blend-difference lg:justify-evenly lg:px-[11.25dvw]"
     >
-      <div className="flex flex-row items-center gap-1.5 md:gap-2 bg-background md:bg-transparent">
+      <div className="flex flex-row items-center gap-1.5 md:gap-2">
         <a
           href="/"
           aria-label="Josh Footman"
@@ -131,7 +135,7 @@ export function Navbar() {
           onFocus={() => animateWordmark(true)}
           onMouseEnter={() => animateWordmark(true)}
           onMouseLeave={() => animateWordmark(false)}
-          className="z-20 inline-flex cursor-pointer items-baseline text-3xl leading-none mix-blend-difference text-background before:mr-1 before:font-bold before:opacity-0 before:content-['[_'] after:ml-1 after:font-bold after:opacity-0 after:content-['_\]'] hover:before:opacity-100 hover:after:opacity-100 focus-visible:before:opacity-100 focus-visible:after:opacity-100 outline-none md:mix-blend-normal md:text-foreground"
+          className="z-20 inline-flex h-11 cursor-pointer items-center text-3xl leading-none outline-none before:mr-1 before:opacity-0 before:content-['[_'] after:ml-1 after:opacity-0 after:content-['_\]'] hover:before:opacity-100 hover:after:opacity-100 focus-visible:before:opacity-100 focus-visible:after:opacity-100"
         >
           <span className="inline-block h-[1em] overflow-hidden leading-none">
             <span ref={wordmarkTextRef} className="inline-flex flex-col">
@@ -141,28 +145,18 @@ export function Navbar() {
           </span>
         </a>
       </div>
-      <div className="relative mx-6 ml-12 hidden h-6 flex-1 md:flex">
-        <span
-          className={`absolute bottom-0 left-0 h-px w-1/2 origin-right bg-foreground transition-transform duration-300 ease-in-out motion-reduce:transition-none ${
-            atScrollRoot ? "scale-x-100" : "scale-x-0"
-          }`}
-        />
-        <span
-          className={`absolute right-0 bottom-0 h-px w-1/2 origin-left bg-foreground transition-transform duration-300 ease-in-out motion-reduce:transition-none ${
-            atScrollRoot ? "scale-x-100" : "scale-x-0"
-          }`}
-        />
-      </div>
-      <div className="hidden flex-row items-start justify-center gap-2 md:flex">
+      <div className="relative mx-6 ml-12 hidden h-6 flex-1 md:flex"></div>
+      <div className="hidden flex-row items-start justify-center sm:flex md:gap-2 lg:gap-5">
         {["ABOUT", "EXPERIENCE", "PROJECTS", "LINKS"].map((link) => (
           <a
             key={link}
             href={`#${link}`}
-            className="group relative inline-flex items-baseline before:mr-1 after:ml-1 py-2 text-xl before:font-bold before:opacity-0 before:content-['[_'] after:font-bold after:opacity-0 after:content-['_\]'] hover:before:opacity-100 hover:after:opacity-100 focus-visible:before:opacity-100 focus-visible:after:opacity-100 outline-none"
+            onClick={(event) => navigateToHash(event, link)}
+            className="group relative inline-flex items-baseline py-2 text-xl outline-none before:mr-1 before:font-bold before:opacity-0 before:content-['[_'] after:ml-1 after:font-bold after:opacity-0 after:content-['_\]'] hover:before:opacity-100 hover:after:opacity-100 focus-visible:before:opacity-100 focus-visible:after:opacity-100"
           >
             <span className="absolute inset-0 z-1"></span>
             <span className="inline-block overflow-hidden leading-none">
-              <span className="inline-block transition-transform duration-300 ease-out text-shadow-[0_1em_0] text-shadow-foreground group-focus-within:-translate-y-5 group-hover:-translate-y-5 motion-reduce:transition-none motion-reduce:duration-0 motion-reduce:text-shadow-none motion-reduce:group-focus-within:translate-y-0 motion-reduce:group-focus-within:text-white motion-reduce:group-hover:translate-y-0 motion-reduce:group-hover:text-white">
+              <span className="inline-block transition-transform duration-300 ease-out text-shadow-[0_1em_0] text-shadow-white group-focus-within:-translate-y-5 group-hover:-translate-y-5 motion-reduce:transition-none motion-reduce:duration-0 motion-reduce:text-shadow-none motion-reduce:group-focus-within:translate-y-0 motion-reduce:group-focus-within:text-white motion-reduce:group-hover:translate-y-0 motion-reduce:group-hover:text-white">
                 {link}
               </span>
             </span>
@@ -170,13 +164,13 @@ export function Navbar() {
         ))}
       </div>
       <Dialog.Root modal={false} open={open} onOpenChange={setOpen}>
-        <div className="absolute top-8 right-8 h-7 w-7 md:hidden bg-background">
+        <div className="absolute top-10 right-8 h-7 w-7 sm:hidden">
           <span className="pointer-events-none absolute inset-0 z-0" />
           <Dialog.Trigger
             render={
               <button
                 ref={triggerRef}
-                className="absolute inset-0 z-20 flex h-7 w-7 cursor-pointer mix-blend-difference outline-none "
+                className="absolute inset-0 z-20 flex h-7 w-7 cursor-pointer outline-none"
               >
                 <div className="absolute top-1/2 left-0 h-px w-full -translate-y-0.75 bg-white"></div>
                 <div className="absolute top-1/2 left-0 h-px w-full translate-y-0.75 bg-white"></div>
@@ -184,20 +178,23 @@ export function Navbar() {
             }
           />
         </div>
-        <Dialog.Portal container={navRef}>
-          <Dialog.Popup className="group/menu fixed top-0 right-0 z-10 flex w-screen origin-top-right flex-col gap-2 bg-black text-background transition-transform duration-300 ease-in-out outline-none data-ending-style:scale-x-0 data-ending-style:scale-y-0 data-starting-style:scale-x-0 data-starting-style:scale-y-0 md:hidden">
-            <div className="border-b border-background/20 pt-24"></div>
+        <Dialog.Portal>
+          <Dialog.Popup className="group/menu fixed top-0 right-0 z-90 flex w-screen origin-top-right flex-col bg-black text-bg-200 transition-transform duration-300 ease-in-out outline-none data-ending-style:scale-x-0 data-ending-style:scale-y-0 data-starting-style:scale-x-0 data-starting-style:scale-y-0 md:hidden">
+            <div className="border-b border-bg-200/20 pt-24"></div>
             <Dialog.Title className="sr-only">Navigation</Dialog.Title>
-            <div className="flex flex-col gap-2 pt-4 pb-8 sm:flex-row sm:justify-between sm:gap-0 sm:pt-4">
+            <div className="flex flex-col divide-y divide-bg-200/20">
               {["ABOUT", "EXPERIENCE", "PROJECTS", "LINKS"].map((link) => (
                 <a
                   key={link}
                   href={`#${link}`}
-                  onClick={() => setOpen(false)}
-                  className="px-10 sm:w-full w-fit text-center py-2 text-xl outline-none"
+                  onClick={(event) => {
+                    setOpen(false);
+                    navigateToHash(event, link);
+                  }}
+                  className="group flex w-full items-center justify-start px-8 py-4 text-center text-xl outline-none"
                 >
                   <span className="inline-block overflow-hidden leading-none">
-                    <span className="inline-block transform-[translateY(0)] opacity-100 transition-[transform,opacity] delay-330 duration-300 ease text-shadow-[0_1em_0] text-shadow-background group-data-ending-style/menu:transform-[translateY(1em)] group-data-ending-style/menu:opacity-0 group-data-starting-style/menu:transform-[translateY(1em)] group-data-starting-style/menu:opacity-0 motion-reduce:transform-[translateY(0)] motion-reduce:opacity-100 motion-reduce:transition-none">
+                    <span className="ease inline-block transform-[translateY(0)] opacity-100 transition-[transform,opacity] delay-330 duration-300 text-shadow-[0_1em_0] text-shadow-bg-200 group-data-ending-style/menu:transform-[translateY(1em)] group-data-ending-style/menu:opacity-0 group-data-starting-style/menu:transform-[translateY(1em)] group-data-starting-style/menu:opacity-0 before:mr-1 before:font-bold before:opacity-0 before:content-['['] group-hover:before:opacity-100 group-focus-visible:before:opacity-100 after:ml-1 after:font-bold after:opacity-0 after:content-[']'] group-hover:after:opacity-100 group-focus-visible:after:opacity-100 motion-reduce:transform-[translateY(0)] motion-reduce:opacity-100 motion-reduce:transition-none">
                       {link}
                     </span>
                   </span>
