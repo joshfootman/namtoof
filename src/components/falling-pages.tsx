@@ -70,14 +70,77 @@ export function FallingPagesPage({
   zIndex,
   ...props
 }: FallingPageProps) {
+  const [entered, setEntered] = React.useState(false);
   const sectionRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
 
-    const wrapper = section.querySelector("[data-falling-page-wrap]");
-    const content = section.querySelector("[data-falling-page-content]");
+    let hasEntered = false;
+    let animationFrame = 0;
+    let listening = false;
+
+    const sectionTop = () => {
+      const rect = section.getBoundingClientRect();
+      return rect.top + window.scrollY;
+    };
+
+    const stopListening = () => {
+      if (!listening) return;
+      listening = false;
+      window.removeEventListener("scroll", scheduleCheck);
+      window.removeEventListener("resize", scheduleCheck);
+    };
+
+    const enter = () => {
+      if (hasEntered) return;
+      hasEntered = true;
+      setEntered(true);
+      stopListening();
+    };
+
+    const checkPosition = () => {
+      animationFrame = 0;
+
+      const maxScroll =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const start = Math.min(sectionTop(), maxScroll);
+
+      if (window.scrollY >= start - 1) enter();
+    };
+
+    const scheduleCheck = () => {
+      if (animationFrame) return;
+      animationFrame = requestAnimationFrame(checkPosition);
+    };
+
+    scheduleCheck();
+    listening = true;
+    window.addEventListener("scroll", scheduleCheck, { passive: true });
+    window.addEventListener("resize", scheduleCheck);
+
+    return () => {
+      if (animationFrame) cancelAnimationFrame(animationFrame);
+      stopListening();
+    };
+  }, []);
+
+  React.useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    if (reduceMotion) return;
+
+    const wrapper = section.querySelector<HTMLElement>(
+      "[data-falling-page-wrap]",
+    );
+    const content = section.querySelector<HTMLElement>(
+      "[data-falling-page-content]",
+    );
 
     if (!wrapper || !content) return;
 
@@ -90,7 +153,8 @@ export function FallingPagesPage({
         pin: wrapper,
         trigger: section,
         start: "top 0%",
-        end: `+=${window.innerHeight}`,
+        end: () => `+=${window.innerHeight}`,
+        invalidateOnRefresh: true,
         scrub: true,
       },
     });
@@ -101,7 +165,8 @@ export function FallingPagesPage({
       scrollTrigger: {
         trigger: content,
         start: "top -80%",
-        end: `+=${0.5 * window.innerHeight}`,
+        end: () => `+=${0.5 * window.innerHeight}`,
+        invalidateOnRefresh: true,
         scrub: true,
       },
     });
@@ -117,12 +182,16 @@ export function FallingPagesPage({
   return (
     <section
       ref={sectionRef}
-      className={cn("relative h-screen", className)}
+      data-falling-page-entered={entered}
+      className={cn("group/page relative h-screen", className)}
       style={{ zIndex }}
       {...props}
     >
       <div data-falling-page-wrap className="h-screen">
-        <div data-falling-page-content className="flex h-full w-full flex-col">
+        <div
+          data-falling-page-content
+          className="flex h-full w-full transform-gpu flex-col bg-noise outline outline-neutral-200 lg:px-[11.25dvw] lg:py-[11.25dvh]"
+        >
           {children}
         </div>
       </div>

@@ -125,6 +125,7 @@ export function Navbar() {
   return (
     <nav
       ref={navRef}
+      aria-label="Primary"
       className="fixed top-0 z-100 flex w-screen flex-row flex-nowrap items-center justify-between p-8 text-white mix-blend-difference lg:justify-evenly lg:px-[11.25dvw]"
     >
       <div className="flex flex-row items-center gap-1.5 md:gap-2">
@@ -170,7 +171,11 @@ export function Navbar() {
             render={
               <button
                 ref={triggerRef}
-                className="absolute inset-0 z-20 flex h-7 w-7 cursor-pointer outline-none"
+                type="button"
+                aria-label={open ? "Close navigation" : "Open navigation"}
+                aria-controls="mobile-navigation"
+                aria-expanded={open}
+                className="absolute inset-0 z-20 flex h-7 w-7 cursor-pointer outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
               >
                 <div className="absolute top-1/2 left-0 h-px w-full -translate-y-0.75 bg-white"></div>
                 <div className="absolute top-1/2 left-0 h-px w-full translate-y-0.75 bg-white"></div>
@@ -179,10 +184,13 @@ export function Navbar() {
           />
         </div>
         <Dialog.Portal>
-          <Dialog.Popup className="group/menu fixed top-0 right-0 z-90 flex w-screen origin-top-right flex-col bg-black text-bg-200 transition-transform duration-300 ease-in-out outline-none data-ending-style:scale-x-0 data-ending-style:scale-y-0 data-starting-style:scale-x-0 data-starting-style:scale-y-0 md:hidden">
-            <div className="border-b border-bg-200/20 pt-24"></div>
+          <Dialog.Popup
+            id="mobile-navigation"
+            className="group/menu text-bg-200 fixed top-0 right-0 z-90 flex w-screen origin-top-right flex-col bg-black transition-transform duration-300 ease-in-out outline-none data-ending-style:scale-x-0 data-ending-style:scale-y-0 data-starting-style:scale-x-0 data-starting-style:scale-y-0 md:hidden"
+          >
+            <div className="border-bg-200/20 border-b pt-24"></div>
             <Dialog.Title className="sr-only">Navigation</Dialog.Title>
-            <div className="flex flex-col divide-y divide-bg-200/20">
+            <div className="divide-bg-200/20 flex flex-col divide-y">
               {["ABOUT", "EXPERIENCE", "PROJECTS", "LINKS"].map((link) => (
                 <a
                   key={link}
@@ -194,7 +202,7 @@ export function Navbar() {
                   className="group flex w-full items-center justify-start px-8 py-4 text-center text-xl outline-none"
                 >
                   <span className="inline-block overflow-hidden leading-none">
-                    <span className="ease inline-block transform-[translateY(0)] opacity-100 transition-[transform,opacity] delay-330 duration-300 text-shadow-[0_1em_0] text-shadow-bg-200 group-data-ending-style/menu:transform-[translateY(1em)] group-data-ending-style/menu:opacity-0 group-data-starting-style/menu:transform-[translateY(1em)] group-data-starting-style/menu:opacity-0 before:mr-1 before:font-bold before:opacity-0 before:content-['['] group-hover:before:opacity-100 group-focus-visible:before:opacity-100 after:ml-1 after:font-bold after:opacity-0 after:content-[']'] group-hover:after:opacity-100 group-focus-visible:after:opacity-100 motion-reduce:transform-[translateY(0)] motion-reduce:opacity-100 motion-reduce:transition-none">
+                    <span className="ease text-shadow-bg-200 inline-block transform-[translateY(0)] opacity-100 transition-[transform,opacity] delay-330 duration-300 text-shadow-[0_1em_0] group-data-ending-style/menu:transform-[translateY(1em)] group-data-ending-style/menu:opacity-0 group-data-starting-style/menu:transform-[translateY(1em)] group-data-starting-style/menu:opacity-0 before:mr-1 before:font-bold before:opacity-0 before:content-['['] group-hover:before:opacity-100 group-focus-visible:before:opacity-100 after:ml-1 after:font-bold after:opacity-0 after:content-[']'] group-hover:after:opacity-100 group-focus-visible:after:opacity-100 motion-reduce:transform-[translateY(0)] motion-reduce:opacity-100 motion-reduce:transition-none">
                       {link}
                     </span>
                   </span>
@@ -216,10 +224,10 @@ function usePrefersReducedMotion() {
     const update = () => setPrefersReducedMotion(mediaQuery.matches);
 
     update();
-    mediaQuery.addEventListener("change", update);
+    mediaQuery.addEventListener?.("change", update);
 
     return () => {
-      mediaQuery.removeEventListener("change", update);
+      mediaQuery.removeEventListener?.("change", update);
     };
   }, []);
 

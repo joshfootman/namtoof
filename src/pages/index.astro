@@ -1,6 +1,7 @@
 ---
 import { FallingPages, FallingPagesPage } from "../components/falling-pages";
 import { Navbar } from "../components/navbar";
+import { Title } from "../components/title";
 import "../styles/global.css";
 ---
 
@@ -16,28 +17,18 @@ import "../styles/global.css";
   <body class="bg-black font-pixel-secondary">
     <Navbar client:load />
     <FallingPages client:load>
-      <FallingPagesPage client:load>
-        <div class="flex h-full w-full bg-home"></div>
-      </FallingPagesPage>
+      <FallingPagesPage client:load />
       <FallingPagesPage id="ABOUT" client:load>
-        <div class="flex h-full w-full bg-about">
-          <h1>about</h1>
-        </div>
+        <Title text="ABOUT" client:load />
       </FallingPagesPage>
       <FallingPagesPage id="EXPERIENCE" client:load>
-        <div class="flex h-full w-full bg-experience">
-          <h1>experience</h1>
-        </div>
+        <Title text="EXPERIENCE" client:load />
       </FallingPagesPage>
       <FallingPagesPage id="PROJECTS" client:load>
-        <div class="flex h-full w-full bg-projects">
-          <h1>projects</h1>
-        </div>
+        <Title text="PROJECTS" client:load />
       </FallingPagesPage>
       <FallingPagesPage id="LINKS" client:load>
-        <div class="flex h-full w-full bg-links">
-          <h1>links</h1>
-        </div>
+        <Title text="LINKS" client:load />
       </FallingPagesPage>
     </FallingPages>
   </body>
