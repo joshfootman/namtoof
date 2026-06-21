@@ -190,7 +190,7 @@ export function FallingPagesPage({
       <div data-falling-page-wrap className="h-screen">
         <div
           data-falling-page-content
-          className="flex h-full w-full transform-gpu flex-col bg-noise outline outline-neutral-200 lg:px-[11.25dvw] lg:py-[11.25dvh]"
+          className="flex h-full w-full transform-gpu flex-col bg-noise outline outline-neutral-200 lg:px-[11.25dvw] py-[11.25dvh]"
         >
           {children}
         </div>
