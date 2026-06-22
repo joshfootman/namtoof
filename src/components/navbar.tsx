@@ -186,11 +186,11 @@ export function Navbar() {
         <Dialog.Portal>
           <Dialog.Popup
             id="mobile-navigation"
-            className="group/menu text-white fixed top-0 right-0 z-10 flex w-screen origin-top-right flex-col bg-black transition-transform duration-300 ease-in-out outline-none data-ending-style:scale-x-0 data-ending-style:scale-y-0 data-starting-style:scale-x-0 data-starting-style:scale-y-0 md:hidden"
+            className="group/menu fixed top-0 right-0 z-10 flex w-screen origin-top-right flex-col bg-black text-white transition-transform duration-300 ease-in-out outline-none data-ending-style:scale-x-0 data-ending-style:scale-y-0 data-starting-style:scale-x-0 data-starting-style:scale-y-0 md:hidden"
           >
-            <div className="border-white/20 border-b pt-24"></div>
+            <div className="border-b border-white/20 pt-24"></div>
             <Dialog.Title className="sr-only">Navigation</Dialog.Title>
-            <div className="divide-white/20 flex flex-col divide-y">
+            <div className="flex flex-col divide-y divide-white/20">
               {["ABOUT", "EXPERIENCE", "PROJECTS", "LINKS"].map((link) => (
                 <a
                   key={link}
@@ -199,10 +199,10 @@ export function Navbar() {
                     setOpen(false);
                     navigateToHash(event, link);
                   }}
-                  className="group flex w-full items-center justify-start px-8 py-4 text-center text-xl outline-none" 
+                  className="group flex w-full items-center justify-start px-8 py-4 text-center text-xl outline-none"
                 >
                   <span className="inline-block overflow-hidden leading-none">
-                    <span className="ease text-shadow-white inline-block transform-[translateY(0)] opacity-100 transition-[transform,opacity] delay-330 duration-300 text-shadow-[0_1em_0] group-data-ending-style/menu:transform-[translateY(1em)] group-data-ending-style/menu:opacity-0 group-data-starting-style/menu:transform-[translateY(1em)] group-data-starting-style/menu:opacity-0 before:mr-1 before:font-bold before:opacity-0 before:content-['['] group-hover:before:opacity-100 group-focus-visible:before:opacity-100 after:ml-1 after:font-bold after:opacity-0 after:content-[']'] group-hover:after:opacity-100 group-focus-visible:after:opacity-100 motion-reduce:transform-[translateY(0)] motion-reduce:opacity-100 motion-reduce:transition-none">
+                    <span className="ease inline-block transform-[translateY(0)] opacity-100 transition-[transform,opacity] delay-330 duration-300 text-shadow-[0_1em_0] text-shadow-white group-data-ending-style/menu:transform-[translateY(1em)] group-data-ending-style/menu:opacity-0 group-data-starting-style/menu:transform-[translateY(1em)] group-data-starting-style/menu:opacity-0 before:mr-1 before:font-bold before:opacity-0 before:content-['['] group-hover:before:opacity-100 group-focus-visible:before:opacity-100 after:ml-1 after:font-bold after:opacity-0 after:content-[']'] group-hover:after:opacity-100 group-focus-visible:after:opacity-100 motion-reduce:transform-[translateY(0)] motion-reduce:opacity-100 motion-reduce:transition-none">
                       {link}
                     </span>
                   </span>

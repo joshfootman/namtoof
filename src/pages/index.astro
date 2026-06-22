@@ -5,7 +5,7 @@ import { Title } from "../components/title";
 import "../styles/global.css";
 ---
 
-<html lang="en" class="scrollbar-gutter-stable scroll-smooth bg-black">
+<html lang="en" class="scrollbar-gutter-stable scroll-smooth bg-primary">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -14,10 +14,34 @@ import "../styles/global.css";
     <meta name="generator" content={Astro.generator} />
     <title>Josh Footman</title>
   </head>
-  <body class="bg-black font-pixel-secondary">
+  <body class="bg-primary font-pixel-secondary">
     <Navbar client:load />
     <FallingPages client:load>
-      <FallingPagesPage client:load />
+      <FallingPagesPage client:load>
+        <div class="flex h-full w-full justify-center">
+          <div
+            class="relative flex h-fit w-200 flex-col-reverse sm:h-auto lg:justify-center"
+          >
+            <div class="z-1 flex flex-col gap-5 pt-8 sm:pt-0">
+              <h2
+                class="@container text-[calc(16cqw)] text-nowrap [text-box:trim-both_cap_alphabetic] sm:text-[calc(10cqw)] lg:@container-normal lg:absolute lg:top-64 lg:bottom-24 lg:-left-16 lg:text-8xl"
+              >
+                JOSH FOOTMAN
+              </h2>
+              <p
+                class="@container text-[calc(8cqw)] text-nowrap [text-box:trim-both_cap_alphabetic] before:content-['['] after:content-[']'] sm:text-[calc(5cqw)] lg:@container-normal lg:absolute lg:top-87 lg:bottom-14 lg:-left-11 lg:text-5xl"
+              >
+                CREATIVE ENGINEER
+              </p>
+            </div>
+            <img
+              src="/me.jpeg"
+              width="450"
+              class="z-0 sm:absolute sm:top-12 sm:left-1/2 sm:-translate-x-1/2 lg:right-0 lg:left-auto lg:translate-x-0"
+            />
+          </div>
+        </div>
+      </FallingPagesPage>
       <FallingPagesPage id="ABOUT" client:load>
         <Title text="ABOUT" client:load />
       </FallingPagesPage>
@@ -33,3 +57,5 @@ import "../styles/global.css";
     </FallingPages>
   </body>
 </html>
+
+<!--  -->

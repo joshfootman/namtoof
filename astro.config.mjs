@@ -9,6 +9,7 @@ const assetsPrefix =
 
 // https://astro.build/config
 export default defineConfig({
+  compressHTML: "jsx",
   integrations: [react()],
   build: { assetsPrefix },
   vite: {
