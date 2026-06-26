@@ -153,7 +153,7 @@ export function Navbar() {
             key={link}
             href={`#${link}`}
             onClick={(event) => navigateToHash(event, link)}
-            className="group relative inline-flex items-baseline py-2 text-xl outline-none before:mr-1 before:font-bold before:opacity-0 before:content-['[_'] after:ml-1 after:font-bold after:opacity-0 after:content-['_\]'] hover:before:opacity-100 hover:after:opacity-100 focus-visible:before:opacity-100 focus-visible:after:opacity-100"
+            className="group relative inline-flex items-baseline py-2 text-xl outline-none before:mr-1 before:opacity-0 before:content-['[_'] after:ml-1 after:opacity-0 after:content-['_\]'] hover:before:opacity-100 hover:after:opacity-100 focus-visible:before:opacity-100 focus-visible:after:opacity-100"
           >
             <span className="absolute inset-0"></span>
             <span className="inline-block overflow-hidden leading-none">
@@ -202,7 +202,7 @@ export function Navbar() {
                   className="group flex w-full items-center justify-start px-8 py-4 text-center text-xl outline-none"
                 >
                   <span className="inline-block overflow-hidden leading-none">
-                    <span className="ease inline-block transform-[translateY(0)] opacity-100 transition-[transform,opacity] delay-330 duration-300 text-shadow-[0_1em_0] text-shadow-white group-data-ending-style/menu:transform-[translateY(1em)] group-data-ending-style/menu:opacity-0 group-data-starting-style/menu:transform-[translateY(1em)] group-data-starting-style/menu:opacity-0 before:mr-1 before:font-bold before:opacity-0 before:content-['['] group-hover:before:opacity-100 group-focus-visible:before:opacity-100 after:ml-1 after:font-bold after:opacity-0 after:content-[']'] group-hover:after:opacity-100 group-focus-visible:after:opacity-100 motion-reduce:transform-[translateY(0)] motion-reduce:opacity-100 motion-reduce:transition-none">
+                    <span className="ease inline-block transform-[translateY(0)] opacity-100 transition-[transform,opacity] delay-330 duration-300 text-shadow-[0_1em_0] text-shadow-white group-data-ending-style/menu:transform-[translateY(1em)] group-data-ending-style/menu:opacity-0 group-data-starting-style/menu:transform-[translateY(1em)] group-data-starting-style/menu:opacity-0 before:mr-1 before:opacity-0 before:content-['['] group-hover:before:opacity-100 group-focus-visible:before:opacity-100 after:ml-1 after:opacity-0 after:content-[']'] group-hover:after:opacity-100 group-focus-visible:after:opacity-100 motion-reduce:transform-[translateY(0)] motion-reduce:opacity-100 motion-reduce:transition-none">
                       {link}
                     </span>
                   </span>

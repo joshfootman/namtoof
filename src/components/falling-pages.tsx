@@ -16,15 +16,20 @@ export function FallingPages({
   children,
   ...props
 }: React.ComponentProps<"div">) {
+  const navigationFrameRef = React.useRef(0);
+  const navigationTargetRef = React.useRef<string | null>(null);
+
   React.useEffect(() => {
-    const handleNavigate = (event: Event) => {
-      const { id } = (event as CustomEvent<{ id?: string }>).detail ?? {};
+    const navigate = () => {
+      navigationFrameRef.current = 0;
+
+      const id = navigationTargetRef.current;
+      navigationTargetRef.current = null;
       if (!id) return;
 
       const target = document.getElementById(id);
       if (!target) return;
 
-      event.preventDefault();
       ScrollTrigger.refresh();
 
       const trigger = ScrollTrigger.getAll().find(
@@ -37,12 +42,33 @@ export function FallingPages({
       });
       history.pushState(null, "", `#${id}`);
 
-      requestAnimationFrame(() => ScrollTrigger.update());
+      ScrollTrigger.update();
+    };
+
+    const handleNavigate = (event: Event) => {
+      const { id } = (event as CustomEvent<{ id?: string }>).detail ?? {};
+      if (!id) return;
+
+      const target = document.getElementById(id);
+      if (!target) return;
+
+      event.preventDefault();
+      navigationTargetRef.current = id;
+
+      if (navigationFrameRef.current) {
+        cancelAnimationFrame(navigationFrameRef.current);
+      }
+
+      navigationFrameRef.current = requestAnimationFrame(navigate);
     };
 
     window.addEventListener(FALLING_PAGE_NAVIGATE_EVENT, handleNavigate);
 
     return () => {
+      if (navigationFrameRef.current) {
+        cancelAnimationFrame(navigationFrameRef.current);
+      }
+
       window.removeEventListener(FALLING_PAGE_NAVIGATE_EVENT, handleNavigate);
     };
   }, []);
