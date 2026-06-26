@@ -19,7 +19,9 @@ import "../styles/global.css";
       class="flex h-screen w-full flex-col overflow-hidden border-b border-primary bg-noise px-8 py-[11.25dvh] lg:px-[11.25dvw]"
     >
       <div class="flex h-full w-full justify-center">
-        <div class="relative flex h-full w-220 flex-col lg:justify-center">
+        <div
+          class="@container relative flex h-full w-220 flex-col md:@container-normal lg:justify-center"
+        >
           <div class="z-1 flex h-full flex-col gap-5 pt-8 sm:pt-0">
             <div
               class="flex h-188 flex-col justify-between gap-5 lg:absolute lg:top-54 lg:left-0 lg:h-auto"
@@ -28,12 +30,12 @@ import "../styles/global.css";
                 class="flex translate-y-[1dvh] flex-col gap-5 sm:translate-y-[4dvh] lg:translate-y-0"
               >
                 <h2
-                  class="text-7xl text-nowrap [text-box:trim-both_cap_alphabetic] sm:text-8xl"
+                  class="text-[18cqw] text-nowrap [text-box:trim-both_cap_alphabetic] md:text-8xl"
                 >
                   JOSH FOOTMAN
                 </h2>
                 <p
-                  class="text-4xl text-nowrap [text-box:trim-both_cap_alphabetic] before:content-['['] after:content-[']'] sm:text-5xl"
+                  class="text-[9cqw] text-nowrap [text-box:trim-both_cap_alphabetic] before:content-['['] after:content-[']'] md:text-5xl"
                 >
                   CREATIVE ENGINEER
                 </p>
@@ -42,14 +44,14 @@ import "../styles/global.css";
                 class="flex translate-y-[2.5dvh] flex-col gap-5 lg:mt-8 lg:translate-y-0"
               >
                 <p
-                  class="-mx-12 bg-secondary px-12 text-2xl uppercase sm:bg-transparent"
+                  class="-mx-8 bg-secondary px-8 py-3 text-[clamp(1.125rem,7cqw,1.5rem)] leading-6 uppercase [text-box:trim-both_cap_alphabetic] sm:mx-0 sm:bg-transparent sm:px-0 md:text-2xl"
                 >
                   Building quality products for changing user needs
                 </p>
                 <a
                   href="/JOSH_FOOTMAN_CV.pdf"
                   download
-                  class="group inline-flex w-fit cursor-pointer items-center bg-noise-secondary px-5 py-4 text-xl leading-none text-secondary uppercase outline-none before:mr-1 before:inline-block before:translate-y-[0.08em] before:opacity-0 before:content-['['] after:ml-1 after:inline-block after:translate-y-[0.08em] after:opacity-0 after:content-[']'] hover:before:opacity-100 hover:after:opacity-100 focus-visible:before:opacity-100 focus-visible:after:opacity-100"
+                  class="group inline-flex w-fit cursor-pointer items-center bg-noise-secondary px-5 py-4 text-[clamp(1rem,6cqw,1.25rem)] leading-none text-secondary uppercase outline-none before:mr-1 before:inline-block before:translate-y-[0.08em] before:opacity-0 before:content-['['] after:ml-1 after:inline-block after:translate-y-[0.08em] after:opacity-0 after:content-[']'] hover:before:opacity-100 hover:after:opacity-100 focus-visible:before:opacity-100 focus-visible:after:opacity-100 md:text-xl"
                 >
                   <span class="inline-block overflow-hidden leading-none">
                     <span
@@ -65,7 +67,7 @@ import "../styles/global.css";
           <img
             src="/me.jpeg"
             width="450"
-            class="absolute top-12 left-1/2 z-0 w-112.5 max-w-none -translate-x-1/2 lg:right-0 lg:left-auto lg:translate-x-0"
+            class="absolute top-12 left-1/2 z-0 w-[clamp(20rem,112.5cqw,28.125rem)] max-w-none -translate-x-1/2 md:w-112.5 lg:right-0 lg:left-auto lg:translate-x-0"
           />
         </div>
       </div>
