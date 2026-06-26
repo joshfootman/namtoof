@@ -1,5 +1,4 @@
 ---
-import { FallingPages, FallingPagesPage } from "../components/falling-pages";
 import { Navbar } from "../components/navbar";
 import { Title } from "../components/title";
 import "../styles/global.css";
@@ -16,35 +15,45 @@ import "../styles/global.css";
   </head>
   <body class="bg-primary font-pixel-secondary">
     <Navbar client:load />
-    <FallingPages client:load>
-      <FallingPagesPage client:load>
-        <div class="flex h-full w-full justify-center">
-          <div
-            class="relative flex h-fit w-220 flex-col-reverse pt-4 sm:h-auto sm:pt-0 lg:justify-center"
-          >
-            <div class="z-1 flex flex-col gap-5 pt-8 sm:pt-0">
-              <div class="flex flex-col gap-5 lg:absolute lg:top-54 lg:left-0">
+    <section
+      class="flex h-screen w-full flex-col overflow-hidden border-b border-primary bg-noise px-8 py-[11.25dvh] lg:px-[11.25dvw]"
+    >
+      <div class="flex h-full w-full justify-center">
+        <div class="relative flex h-full w-220 flex-col lg:justify-center">
+          <div class="z-1 flex h-full flex-col gap-5 pt-8 sm:pt-0">
+            <div
+              class="flex h-188 flex-col justify-between gap-5 lg:absolute lg:top-54 lg:left-0 lg:h-auto"
+            >
+              <div
+                class="flex translate-y-[1dvh] flex-col gap-5 sm:translate-y-[4dvh] lg:translate-y-0"
+              >
                 <h2
-                  class="@container text-[calc(15.5cqw)] text-nowrap [text-box:trim-both_cap_alphabetic] sm:text-[calc(10cqw)] lg:@container-normal lg:text-8xl"
+                  class="text-7xl text-nowrap [text-box:trim-both_cap_alphabetic] sm:text-8xl"
                 >
                   JOSH FOOTMAN
                 </h2>
                 <p
-                  class="@container text-[calc(8cqw)] text-nowrap [text-box:trim-both_cap_alphabetic] before:content-['['] after:content-[']'] sm:text-[calc(5cqw)] lg:@container-normal lg:text-5xl"
+                  class="text-4xl text-nowrap [text-box:trim-both_cap_alphabetic] before:content-['['] after:content-[']'] sm:text-5xl"
                 >
                   CREATIVE ENGINEER
                 </p>
-                <p class="mt-8 text-2xl uppercase">
+              </div>
+              <div
+                class="flex translate-y-[2.5dvh] flex-col gap-5 lg:mt-8 lg:translate-y-0"
+              >
+                <p
+                  class="-mx-12 bg-secondary px-12 text-2xl uppercase sm:bg-transparent"
+                >
                   Building quality products for changing user needs
                 </p>
                 <a
                   href="/JOSH_FOOTMAN_CV.pdf"
                   download
-                  class="group inline-flex w-fit cursor-pointer items-center bg-primary px-5 py-4 text-xl uppercase outline-none"
+                  class="group inline-flex w-fit cursor-pointer items-center bg-primary px-5 py-4 text-xl leading-none text-white uppercase outline-none before:mr-1 before:inline-block before:translate-y-[0.08em] before:opacity-0 before:content-['['] after:ml-1 after:inline-block after:translate-y-[0.08em] after:opacity-0 after:content-[']'] hover:before:opacity-100 hover:after:opacity-100 focus-visible:before:opacity-100 focus-visible:after:opacity-100"
                 >
                   <span class="inline-block overflow-hidden leading-none">
                     <span
-                      class="inline-block transform-[translateY(0)] text-white opacity-100 transition-[transform,opacity] duration-300 ease-out text-shadow-[0_1em_0] text-shadow-white group-hover:transform-[translateY(-0.92em)] group-focus-visible:transform-[translateY(-0.92em)] before:mr-1 before:opacity-0 before:content-['['] group-hover:before:opacity-100 group-focus-visible:before:opacity-100 after:ml-1 after:opacity-0 after:content-[']'] group-hover:after:opacity-100 group-focus-visible:after:opacity-100 motion-reduce:transform-[translateY(0.08em)] motion-reduce:opacity-100 motion-reduce:transition-none"
+                      class="inline-block transform-[translateY(0)] opacity-100 transition-[transform,opacity] duration-300 ease-out text-shadow-[0_1em_0] text-shadow-white group-hover:transform-[translateY(-0.92em)] group-focus-visible:transform-[translateY(-0.92em)] motion-reduce:transform-[translateY(0.08em)] motion-reduce:opacity-100 motion-reduce:transition-none"
                     >
                       download cv
                     </span>
@@ -52,28 +61,37 @@ import "../styles/global.css";
                 </a>
               </div>
             </div>
-            <img
-              src="/me.jpeg"
-              width="450"
-              class="z-0 sm:absolute sm:top-12 sm:left-1/2 sm:-translate-x-1/2 lg:right-0 lg:left-auto lg:translate-x-0"
-            />
           </div>
+          <img
+            src="/me.jpeg"
+            width="450"
+            class="absolute top-12 left-1/2 z-0 w-112.5 max-w-none -translate-x-1/2 lg:right-0 lg:left-auto lg:translate-x-0"
+          />
         </div>
-      </FallingPagesPage>
-      <FallingPagesPage id="ABOUT" client:load>
-        <Title text="ABOUT" client:load />
-      </FallingPagesPage>
-      <FallingPagesPage id="EXPERIENCE" client:load>
-        <Title text="EXPERIENCE" client:load />
-      </FallingPagesPage>
-      <FallingPagesPage id="PROJECTS" client:load>
-        <Title text="PROJECTS" client:load />
-      </FallingPagesPage>
-      <FallingPagesPage id="LINKS" client:load>
-        <Title text="LINKS" client:load />
-      </FallingPagesPage>
-    </FallingPages>
+      </div>
+    </section>
+    <section
+      class="flex h-screen w-full flex-col border-b border-primary bg-noise px-8 py-[11.25dvh] lg:px-[11.25dvw]"
+    >
+      <Title text="ABOUT" client:load />
+    </section>
+
+    <section
+      class="flex h-screen w-full flex-col border-b border-primary bg-noise px-8 py-[11.25dvh] lg:px-[11.25dvw]"
+    >
+      <Title text="EXPERIENCE" client:load />
+    </section>
+
+    <section
+      class="flex h-screen w-full flex-col border-b border-primary bg-noise px-8 py-[11.25dvh] lg:px-[11.25dvw]"
+    >
+      <Title text="PROJECTS" client:load />
+    </section>
+
+    <section
+      class="flex h-screen w-full flex-col border-b border-primary bg-noise px-8 py-[11.25dvh] lg:px-[11.25dvw]"
+    >
+      <Title text="LINKS" client:load />
+    </section>
   </body>
 </html>
-
-<!--  -->

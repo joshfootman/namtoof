@@ -171,10 +171,10 @@ export function FallingPagesPage({
     if (!wrapper || !content) return;
 
     const transformTween = gsap.to(content, {
-      rotationZ: (Math.random() - 0.5) * 20,
-      scale: 0.4,
-      rotationX: 10,
-      ease: "power1.in",
+      // y: () => -0.08 * window.innerHeight,
+      rotationZ: 0,
+      // scale: 0.75,
+      ease: "none",
       scrollTrigger: {
         pin: wrapper,
         trigger: section,
@@ -216,7 +216,7 @@ export function FallingPagesPage({
       <div data-falling-page-wrap className="h-screen">
         <div
           data-falling-page-content
-          className="flex h-full w-full transform-gpu flex-col bg-noise px-8 py-[11.25dvh] outline outline-neutral-200 lg:px-[11.25dvw]"
+          className="flex h-full w-full transform-gpu flex-col bg-noise px-8 py-[11.25dvh] outline outline-neutral-400 lg:px-[11.25dvw]"
         >
           {children}
         </div>
