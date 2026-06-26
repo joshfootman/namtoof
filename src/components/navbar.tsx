@@ -1,7 +1,6 @@
 import { Dialog } from "@base-ui/react";
 import gsap from "gsap";
 import React from "react";
-import { FALLING_PAGE_NAVIGATE_EVENT } from "./falling-pages";
 
 export function Navbar() {
   const [open, setOpen] = React.useState(false);
@@ -13,23 +12,6 @@ export function Navbar() {
   const hasMountedRef = React.useRef(false);
 
   const prefersReducedMotion = usePrefersReducedMotion();
-
-  const navigateToHash = (
-    event: React.MouseEvent<HTMLAnchorElement>,
-    hash: string,
-  ) => {
-    event.preventDefault();
-
-    const navigationEvent = new CustomEvent(FALLING_PAGE_NAVIGATE_EVENT, {
-      cancelable: true,
-      detail: { id: hash },
-    });
-
-    const handled = !window.dispatchEvent(navigationEvent);
-    if (handled) return;
-
-    document.getElementById(hash)?.scrollIntoView();
-  };
 
   const animateWordmark = (active: boolean) => {
     if (!wordmarkTextRef.current || prefersReducedMotion) return;
@@ -152,7 +134,6 @@ export function Navbar() {
           <a
             key={link}
             href={`#${link}`}
-            onClick={(event) => navigateToHash(event, link)}
             className="group relative inline-flex items-baseline py-2 text-xl outline-none before:mr-1 before:opacity-0 before:content-['[_'] after:ml-1 after:opacity-0 after:content-['_\]'] hover:before:opacity-100 hover:after:opacity-100 focus-visible:before:opacity-100 focus-visible:after:opacity-100"
           >
             <span className="absolute inset-0"></span>
@@ -195,9 +176,8 @@ export function Navbar() {
                 <a
                   key={link}
                   href={`#${link}`}
-                  onClick={(event) => {
+                  onClick={() => {
                     setOpen(false);
-                    navigateToHash(event, link);
                   }}
                   className="group flex w-full items-center justify-start px-8 py-4 text-center text-xl outline-none"
                 >
