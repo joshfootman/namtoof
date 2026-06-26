@@ -49,4 +49,8 @@
   --background-image-noise:
     url("/noise.png"),
     linear-gradient(var(--color-secondary), var(--color-secondary));
+
+  --background-image-noise-secondary:
+    url("/noise.png"),
+    linear-gradient(var(--color-primary), var(--color-primary));
 }
