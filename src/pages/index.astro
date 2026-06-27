@@ -1,4 +1,5 @@
 ---
+import { AboutImageTicker } from "../components/about-image-ticker";
 import { Navbar } from "../components/navbar";
 import { RoleTicker } from "../components/role-ticker";
 import { Title } from "../components/title";
@@ -79,6 +80,17 @@ import "../styles/global.css";
       class="flex h-screen w-full flex-col bg-noise px-8 py-[11.25dvh] lg:px-[11.25dvw]"
     >
       <Title text="ABOUT" client:load />
+      <div
+        class="flex flex-1 flex-col gap-1 py-8 text-2xl uppercase sm:text-3xl lg:text-4xl"
+      >
+        <p>based in cardiff, wales</p>
+        <p>I'm working to master the craft of building software.</p>
+        <p>
+          STILL FIGURING THINGS OUT, BUT TRYING TO MAKE GOOD THINGS WITH GOOD
+          PEOPLE.
+        </p>
+      </div>
+      <AboutImageTicker client:load />
     </section>
     <div class="grid h-32 place-items-center bg-noise-secondary text-secondary">
       <p class="text-center text-sm uppercase md:text-4xl">
