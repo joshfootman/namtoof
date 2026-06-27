@@ -1,6 +1,7 @@
 import { Dialog } from "@base-ui/react";
 import gsap from "gsap";
 import React from "react";
+import { usePrefersReducedMotion } from "../lib/utils";
 
 export function Navbar() {
   const [open, setOpen] = React.useState(false);
@@ -194,22 +195,4 @@ export function Navbar() {
       </Dialog.Root>
     </nav>
   );
-}
-
-function usePrefersReducedMotion() {
-  const [prefersReducedMotion, setPrefersReducedMotion] = React.useState(false);
-
-  React.useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const update = () => setPrefersReducedMotion(mediaQuery.matches);
-
-    update();
-    mediaQuery.addEventListener?.("change", update);
-
-    return () => {
-      mediaQuery.removeEventListener?.("change", update);
-    };
-  }, []);
-
-  return prefersReducedMotion;
 }

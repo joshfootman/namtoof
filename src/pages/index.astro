@@ -1,5 +1,6 @@
 ---
 import { Navbar } from "../components/navbar";
+import { RoleTicker } from "../components/role-ticker";
 import { Title } from "../components/title";
 import "../styles/global.css";
 ---
@@ -24,16 +25,22 @@ import "../styles/global.css";
             <div
               class="mb-[17.5%] flex h-auto min-h-auto flex-col justify-between gap-5 sm:mb-0 lg:absolute lg:top-54 lg:left-0 lg:h-auto"
             >
-              <h2
-                class="text-5xl text-nowrap [text-box:trim-both_cap_alphabetic] md:text-8xl"
-              >
-                JOSH FOOTMAN
-              </h2>
-              <p
-                class="text-2xl text-nowrap [text-box:trim-both_cap_alphabetic] before:content-['['] after:content-[']'] md:text-5xl"
-              >
-                CREATIVE ENGINEER
-              </p>
+              <div class="flex flex-col gap-3 md:gap-4">
+                <h2
+                  class="text-5xl text-nowrap [text-box:trim-both_cap_alphabetic] md:text-8xl"
+                >
+                  JOSH FOOTMAN
+                </h2>
+                <RoleTicker
+                  roles={[
+                    "CREATIVE ENGINEER",
+                    "PRODUCT ENGINEER",
+                    "FULLSTACK ENGINEER",
+                  ]}
+                  className="text-2xl text-nowrap [text-box:trim-both_cap_alphabetic] md:text-5xl"
+                  client:load
+                />
+              </div>
               <p
                 class="-mx-8 mt-0 px-8 py-3 text-lg leading-6 uppercase [text-box:trim-both_cap_alphabetic] sm:mx-0 sm:bg-transparent sm:px-0 md:mt-8 md:text-2xl"
               >
