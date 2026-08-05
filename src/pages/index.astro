@@ -1,132 +1,183 @@
 ---
-import { AboutImageTicker } from "../components/about-image-ticker";
-import { Navbar } from "../components/navbar";
-import { RoleTicker } from "../components/role-ticker";
-import { Title } from "../components/title";
 import "../styles/global.css";
+
+const seo = {
+  title: "Josh Footman",
+  description:
+    "Josh Footman is a software engineer specialising in React, TypeScript, product discovery, front-end architecture, and technical leadership.",
+};
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Josh Footman",
+  jobTitle: "Senior Software Engineer",
+  description: seo.description,
+  email: "mailto:joshjfootman@gmail.com",
+  address: { "@type": "PostalAddress", addressCountry: "GB" },
+  alumniOf: { "@type": "CollegeOrUniversity", name: "University of Warwick" },
+  sameAs: ["https://www.linkedin.com/in/josh-footman-193b10127/"],
+  knowsAbout: [
+    "Product engineering",
+    "Software engineering",
+    "React",
+    "TypeScript",
+    "Java",
+    "Front-end architecture",
+    "Technical leadership",
+  ],
+};
+
+const experience = [
+  {
+    employer: "lloyds banking group",
+    timeline: "jan 2026 — present",
+    description: `
+      share development leadership responsibilities with the technical lead,
+      guiding engineers and translating subject-matter expertise into actionable requirements.
+      work with architects and engineering teams to evolve a microservices and
+      microfrontend architecture spanning react, typescript, java, and spring,
+      while improving front-end standards and mentoring junior engineers.
+    `,
+  },
+  {
+    employer: "ibm",
+    timeline: "jun 2020 — dec 2025",
+    description: `
+      led the complete redesign of a react and typescript application,
+      selecting its core libraries and working directly with client stakeholders
+      to align the product with user needs. shaped technical direction through
+      prototypes and architectural design, ran user workshops, mentored ui engineers,
+      and contributed across the stack with graphql, java, cypher, and scala.
+    `,
+  },
+  {
+    employer: "bae systems",
+    timeline: "feb 2019 — jun 2020",
+    description: `
+      worked across the full software development lifecycle on three projects,
+      building erp management tools and assuring the quality of a licence management system.
+      also initiated and developed a react and node.js mobile proof of concept
+      for the uk ministry of defence, and introduced cypress and jest to improve
+      front-end reliability and maintainability.
+    `,
+  },
+];
+
+const projects = [
+  {
+    title: "craft",
+    description: "refining the craft of building great components",
+    href: "#",
+  },
+];
+
+const links = [
+  {
+    href: "https://www.linkedin.com/in/josh-footman-193b10127/",
+    title: "linkedin",
+  },
+  { href: "https://github.com/joshfootman", title: "github" },
+];
 ---
 
-<html lang="en" class="scrollbar-gutter-stable scroll-smooth bg-primary">
+<!doctype html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={seo.description} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Josh Footman" />
+    <meta name="theme-color" content="#f3f1e9" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content={seo.title} />
+    <meta property="og:description" content={seo.description} />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="profile:first_name" content="Josh" />
+    <meta property="profile:last_name" content="Footman" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={seo.title} />
+    <meta name="twitter:description" content={seo.description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Josh Footman</title>
+    <title>{seo.title}</title>
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(structuredData)}
+    />
   </head>
-  <body class="bg-primary font-pixel-secondary">
-    <Navbar client:load />
-    <section
-      class="flex h-screen w-full flex-col overflow-hidden bg-noise px-8 py-[11.25dvh] lg:px-[11.25dvw]"
-    >
-      <div class="flex h-full w-full justify-center">
-        <div class="relative flex h-full w-220 flex-col lg:justify-center">
-          <div class="z-1 flex h-full flex-col-reverse gap-5 pt-8 sm:pt-0">
-            <div
-              class="mb-[17.5%] flex h-auto min-h-auto flex-col justify-between gap-5 sm:mb-0 lg:absolute lg:top-54 lg:left-0 lg:h-auto"
-            >
-              <div class="flex flex-col gap-3 md:gap-4">
-                <h2
-                  class="text-5xl text-nowrap [text-box:trim-both_cap_alphabetic] md:text-8xl"
-                >
-                  JOSH FOOTMAN
-                </h2>
-                <RoleTicker
-                  roles={[
-                    "CREATIVE ENGINEER",
-                    "PRODUCT ENGINEER",
-                    "FULLSTACK ENGINEER",
-                  ]}
-                  className="text-2xl text-nowrap [text-box:trim-both_cap_alphabetic] md:text-5xl"
-                  client:load
-                />
-              </div>
-              <p
-                class="-mx-8 mt-0 px-8 py-3 text-lg leading-6 uppercase [text-box:trim-both_cap_alphabetic] sm:mx-0 sm:bg-transparent sm:px-0 md:mt-8 md:text-2xl"
-              >
-                Building quality products for changing user needs
-              </p>
-              <!-- <a
-                href="/JOSH_FOOTMAN_CV.pdf"
-                download
-                class="group text-md inline-flex w-fit cursor-pointer items-center bg-noise-secondary p-3 leading-none text-secondary uppercase outline-none before:mr-1 before:inline-block before:translate-y-[0.08em] before:opacity-0 before:content-['['] after:ml-1 after:inline-block after:translate-y-[0.08em] after:opacity-0 after:content-[']'] hover:before:opacity-100 hover:after:opacity-100 focus-visible:before:opacity-100 focus-visible:after:opacity-100 sm:px-5 sm:py-4 sm:text-lg md:text-xl"
-              >
-                <span class="inline-block overflow-hidden leading-none">
-                  <span
-                    class="inline-block transform-[translateY(0)] opacity-100 transition-[transform,opacity] duration-300 ease-out text-shadow-[0_1em_0] text-shadow-secondary group-hover:transform-[translateY(-0.92em)] group-focus-visible:transform-[translateY(-0.92em)] motion-reduce:transform-[translateY(0.08em)] motion-reduce:opacity-100 motion-reduce:transition-none"
-                  >
-                    download cv
-                  </span>
-                </span>
-              </a> -->
+  <body>
+    <main class="min-h-screen bg-noise">
+      <div class="p-8 sm:p-24">
+        <div class="max-w-185">
+          <div>
+            <h1 class="font-newsreader text-4xl">josh footman</h1>
+            <p class="font-newsreader-italic text-xl leading-5">
+              senior software engineer
+            </p>
+          </div>
+          <div class="pt-8">
+            <p class="font-newsreader">
+              software engineer with over six years of experience building web
+              applications, with a particular focus on react and typescript.
+              most at home where product thinking and engineering meet:
+              understanding what users need, shaping a clear technical
+              direction, and turning it into software that feels considered and
+              dependable. alongside hands-on development, lead technical
+              discovery, mentor engineers, and help teams raise their
+              engineering standards.
+            </p>
+          </div>
+          <div class="pt-12">
+            <h2 class="font-newsreader text-2xl">experience</h2>
+            <div class="[&>*:last-child]:pb-0">
+              {
+                experience.map(({ employer, timeline, description }) => (
+                  <div class="py-4 sm:p-4">
+                    <div class="flex flex-row items-center justify-between">
+                      <h3 class="font-newsreader-italic text-xl">{employer}</h3>
+                      <p class="font-newsreader-italic">{timeline}</p>
+                    </div>
+                    <p class="font-newsreader">{description}</p>
+                  </div>
+                ))
+              }
             </div>
           </div>
-          <img
-            src="/me.jpeg"
-            class="absolute top-[10%] right-0 z-0 w-[60dvw] max-w-none sm:top-12 sm:right-auto sm:left-1/2 sm:-translate-x-1/2 md:w-112.5 lg:right-0 lg:left-auto lg:translate-x-0"
-          />
+          <div class="pt-12">
+            <h2 class="font-newsreader text-2xl">projects</h2>
+            <div>
+              {
+                projects.map(({ title, description, href }) => (
+                  <div class="relative rounded-2xl py-4 focus-within:bg-neutral-900/5 hover:bg-neutral-900/5 sm:p-4">
+                    <h3 class="font-newsreader-italic text-xl">{title}</h3>
+                    <p class="font-newsreader">{description}</p>
+                    <a href={href} aria-label={title}>
+                      <span class="absolute inset-0" />
+                    </a>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+          <div class="pt-8">
+            <div class="flex flex-col gap-4 sm:flex-row sm:gap-0">
+              {
+                links.map(({ href, title }) => (
+                  <a
+                    class="font-newsreader-italic text-xl outline-none hover:underline focus-visible:underline sm:not-first:pl-3 sm:not-last:pr-3"
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {title}
+                  </a>
+                ))
+              }
+            </div>
+          </div>
         </div>
       </div>
-    </section>
-    <div class="grid h-32 place-items-center bg-noise-secondary text-secondary">
-      <p class="text-center text-sm uppercase md:text-4xl">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae
-        feugiat nulla.
-      </p>
-    </div>
-    <section
-      id="ABOUT"
-      class="flex h-screen w-full flex-col bg-noise px-8 py-[11.25dvh] lg:px-[11.25dvw]"
-    >
-      <Title text="ABOUT" client:load />
-      <div
-        class="flex flex-1 flex-col gap-1 py-8 text-2xl uppercase sm:text-3xl lg:text-4xl"
-      >
-        <p>based in cardiff, wales</p>
-        <p>I'm working to master the craft of building software.</p>
-        <p>
-          STILL FIGURING THINGS OUT, BUT TRYING TO MAKE GOOD THINGS WITH GOOD
-          PEOPLE.
-        </p>
-      </div>
-      <AboutImageTicker client:load />
-    </section>
-    <div class="grid h-32 place-items-center bg-noise-secondary text-secondary">
-      <p class="text-center text-sm uppercase md:text-4xl">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae
-        feugiat nulla.
-      </p>
-    </div>
-    <section
-      id="EXPERIENCE"
-      class="flex h-screen w-full flex-col bg-noise px-8 py-[11.25dvh] lg:px-[11.25dvw]"
-    >
-      <Title text="EXPERIENCE" client:load />
-    </section>
-    <div class="grid h-32 place-items-center bg-noise-secondary text-secondary">
-      <p class="text-center text-sm uppercase md:text-4xl">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae
-        feugiat nulla.
-      </p>
-    </div>
-    <section
-      id="PROJECTS"
-      class="flex h-screen w-full flex-col bg-noise px-8 py-[11.25dvh] lg:px-[11.25dvw]"
-    >
-      <Title text="PROJECTS" client:load />
-    </section>
-    <div class="grid h-32 place-items-center bg-noise-secondary text-secondary">
-      <p class="text-center text-sm uppercase md:text-4xl">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae
-        feugiat nulla.
-      </p>
-    </div>
-    <section
-      id="LINKS"
-      class="flex h-screen w-full flex-col bg-noise px-8 py-[11.25dvh] lg:px-[11.25dvw]"
-    >
-      <Title text="LINKS" client:load />
-    </section>
+    </main>
   </body>
 </html>

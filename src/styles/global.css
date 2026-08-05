@@ -1,56 +1,23 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: "IBM Conv-2y";
-  src: url("/fonts/Web437_IBM_Conv-2y.woff") format("truetype");
+  font-family: "Newsreader";
+  src: url("/fonts/Newsreader[opsz,wght].woff2") format("woff2");
   font-display: swap;
 }
 
 @font-face {
-  font-family: "IBM PS/55 re";
-  src: url("/fonts/Web437_IBM_PS-55_re.woff") format("truetype");
+  font-family: "Newsreader-Italic";
+  src: url("/fonts/Newsreader-Italic[opsz,wght].woff2") format("woff2");
   font-display: swap;
 }
 
-@keyframes dialog-menu-in {
-  from {
-    opacity: 0;
-    transform: scale(0);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes dialog-menu-out {
-  from {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  to {
-    opacity: 0;
-    transform: scale(0);
-  }
-}
-
-@theme inline {
-  --font-pixel-primary: "IBM Conv-2y", monospace;
-  --font-pixel-secondary: "IBM PS/55 re", monospace;
-
-  --color-primary: oklch(0.205 0 0);
-  --color-secondary: oklch(0.985 0 0);
-
-  --cubic-hover: cubic-bezier(0.65, 0.05, 0, 1);
-  --ease-power2-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-
+@theme inline {  
+  --font-newsreader: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-newsreader-italic: "Newsreader-Italic", "Newsreader", Georgia,
+    "Times New Roman", serif;
+  --color-bg: oklch(0.95 0.0075 90.55);
   --background-image-noise:
     url("/noise.png"),
-    linear-gradient(var(--color-secondary), var(--color-secondary));
-
-  --background-image-noise-secondary:
-    url("/noise.png"),
-    linear-gradient(var(--color-primary), var(--color-primary));
+    linear-gradient(var(--color-bg), var(--color-bg));
 }
