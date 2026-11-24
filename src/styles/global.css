@@ -21,3 +21,10 @@
     url("/noise.png"),
     linear-gradient(var(--color-bg), var(--color-bg));
 }
+
+/* Hidden until GSAP staggers them in; only when JS is running */
+.js [data-stagger] > :not(:has(h2)),
+.js [data-stagger] h2,
+.js [data-stagger] h2 + div > * {
+  visibility: hidden;
+}

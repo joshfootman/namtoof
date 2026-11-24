@@ -30,35 +30,35 @@ const structuredData = {
 
 const experience = [
   {
-    employer: "lloyds banking group",
-    timeline: "jan 2026 — present",
+    employer: "Lloyds Banking Group",
+    timeline: "Jan 2026 — Present",
     description: `
-      share development leadership responsibilities with the technical lead,
+      Share development leadership responsibilities with the technical lead,
       guiding engineers and translating subject-matter expertise into actionable requirements.
-      work with architects and engineering teams to evolve a microservices and
-      microfrontend architecture spanning react, typescript, java, and spring,
+      Work with architects and engineering teams to evolve a microservices and
+      microfrontend architecture spanning React, TypeScript, Java, and Spring,
       while improving front-end standards and mentoring junior engineers.
     `,
   },
   {
-    employer: "ibm",
-    timeline: "jun 2020 — dec 2025",
+    employer: "IBM",
+    timeline: "Jun 2020 — Dec 2025",
     description: `
-      led the complete redesign of a react and typescript application,
+      Led the complete redesign of a React and TypeScript application,
       selecting its core libraries and working directly with client stakeholders
-      to align the product with user needs. shaped technical direction through
+      to align the product with user needs. Shaped technical direction through
       prototypes and architectural design, ran user workshops, mentored ui engineers,
-      and contributed across the stack with graphql, java, cypher, and scala.
+      and contributed across the stack with GraphQL, Java, Cypher, and Scala.
     `,
   },
   {
-    employer: "bae systems",
-    timeline: "feb 2019 — jun 2020",
+    employer: "BAE Systems",
+    timeline: "Feb 2019 — Jun 2020",
     description: `
-      worked across the full software development lifecycle on three projects,
-      building erp management tools and assuring the quality of a licence management system.
-      also initiated and developed a react and node.js mobile proof of concept
-      for the uk ministry of defence, and introduced cypress and jest to improve
+      Worked across the full software development lifecycle on three projects,
+      building ERP management tools and assuring the quality of a licence management system.
+      Also initiated and developed a React and Node.js mobile proof of concept
+      for the UK Ministry of Defence, and introduced Cypress and Jest to improve
       front-end reliability and maintainability.
     `,
   },
@@ -66,21 +66,21 @@ const experience = [
 
 const projects = [
   {
-    title: "roundtable",
+    title: "Roundtable",
     description:
-      "browser-based cs2 demo viewer with local parsing and 2D tactical replay",
+      "Browser-based CS2 demo viewer with local parsing and 2D tactical replay",
     href: "https://roundtable.namtoof.com",
   },
   {
-    title: "crug mawr parc",
+    title: "Crug Mawr Parc",
     description:
-      "hand-painted webgpu driving game set in an imaginary welsh national park",
+      "Hand-painted WebGPU driving game set in an imaginary Welsh national park",
     href: "https://crug-mawr-parc.namtoof.com",
   },
   {
-    title: "craft",
+    title: "Craft",
     description:
-      "exploring what makes interface components feel thoughtful, robust, and reusable",
+      "Exploring what makes interface components feel thoughtful, robust, and reusable",
     href: "https://craft.namtoof.com",
   },
 ];
@@ -88,9 +88,9 @@ const projects = [
 const links = [
   {
     href: "https://www.linkedin.com/in/josh-footman-193b10127/",
-    title: "linkedin",
+    title: "LinkedIn",
   },
-  { href: "https://github.com/joshfootman", title: "github" },
+  { href: "https://github.com/joshfootman", title: "GitHub" },
 ];
 ---
 
@@ -114,6 +114,9 @@ const links = [
     <meta name="twitter:description" content={seo.description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{seo.title}</title>
+    <script is:inline>
+      document.documentElement.classList.add("js");
+    </script>
     <script
       type="application/ld+json"
       set:html={JSON.stringify(structuredData)}
@@ -122,27 +125,27 @@ const links = [
   <body>
     <main class="min-h-screen bg-noise">
       <div class="p-8 sm:p-24">
-        <div class="max-w-185">
+        <div class="max-w-185" data-stagger>
           <div>
-            <h1 class="font-newsreader text-4xl">josh footman</h1>
+            <h1 class="font-newsreader text-4xl">Josh Footman</h1>
             <p class="font-newsreader-italic text-xl leading-5">
-              senior software engineer
+              Senior Software Engineer
             </p>
           </div>
           <div class="pt-8">
             <p class="font-newsreader">
-              software engineer with over six years of experience building web
-              applications, with a particular focus on react and typescript.
-              most at home where product thinking and engineering meet:
+              Software engineer with over six years of experience building web
+              applications, with a particular focus on React and TypeScript.
+              Most at home where product thinking and engineering meet:
               understanding what users need, shaping a clear technical
               direction, and turning it into software that feels considered and
-              dependable. alongside hands-on development, lead technical
+              dependable. Alongside hands-on development, lead technical
               discovery, mentor engineers, and help teams raise their
               engineering standards.
             </p>
           </div>
           <div class="pt-12">
-            <h2 class="font-newsreader text-2xl">experience</h2>
+            <h2 class="font-newsreader text-2xl">Experience</h2>
             <div class="[&>*:last-child]:pb-0">
               {
                 experience.map(({ employer, timeline, description }) => (
@@ -158,7 +161,7 @@ const links = [
             </div>
           </div>
           <div class="pt-12">
-            <h2 class="font-newsreader text-2xl">projects</h2>
+            <h2 class="font-newsreader text-2xl">Projects</h2>
             <div>
               {
                 projects.map(({ title, description, href }) => (
@@ -197,5 +200,26 @@ const links = [
         </div>
       </div>
     </main>
+    <script>
+      import { gsap } from "gsap";
+
+      const items = document.querySelectorAll(
+        "[data-stagger] > :not(:has(h2)), [data-stagger] h2, [data-stagger] h2 + div > *",
+      );
+      const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      gsap.fromTo(
+        items,
+        { autoAlpha: 0, y: reduce ? 0 : 16 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: reduce ? 0.3 : 0.8,
+          ease: "expo.out",
+          stagger: 0.07,
+          clearProps: "transform",
+        },
+      );
+    </script>
   </body>
 </html>
